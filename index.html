@@ -66,6 +66,8 @@
     }
 
     .header-actions { display: flex; align-items: center; gap: 14px; }
+    .page-link { color: var(--muted); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .page-link:hover { color: var(--text); }
     .language-switcher {
       display: flex;
       gap: 4px;
@@ -174,6 +176,7 @@
     <header>
       <div class="brand"><span class="logo" aria-hidden="true">✦</span><span>랄프의 디스코드 봇</span></div>
       <div class="header-actions">
+        <a class="page-link" href="terms.html" data-terms-link>이용약관</a>
         <div class="language-switcher" aria-label="언어 선택">
           <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
           <button type="button" data-lang="en" aria-pressed="false">English</button>
@@ -317,6 +320,7 @@
       meta.children[1].textContent = copy.updated;
       document.querySelector('footer').innerHTML = `© <span id="year">${year}</span> ${copy.footer}`;
       switcher.setAttribute('aria-label', copy.switchLabel);
+      document.querySelector('[data-terms-link]').textContent = lang === 'ko' ? '이용약관' : 'Terms';
       switcher.querySelectorAll('button').forEach(button => {
         button.setAttribute('aria-pressed', String(button.dataset.lang === lang));
       });
